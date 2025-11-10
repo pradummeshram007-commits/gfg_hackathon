@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Borrower Dashboard - P2P Micro-Lending Platform</title>
+    <link rel="stylesheet" href="bor.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <span class="logo-icon">💎</span>
+                <span class="logo-text">EduLend</span>
+            </div>
+            <nav class="nav">
+                <a href="#" class="nav-link active">Dashboard</a>
+                <a href="#" class="nav-link">Loans</a>
+                <a href="#" class="nav-link">Lenders</a>
+                <a href="#" class="nav-link">Wallet</a>
+                <a href="#" class="nav-link">Settings</a>
+            </nav>
+            <div class="header-actions">
+                <button class="icon-btn" id="notificationBtn">
+                    <span class="notification-dot"></span>
+                    🔔
+                </button>
+                <div class="user-avatar">AS</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Welcome Section -->
+        <section class="welcome-section">
+            <div class="welcome-text">
+                <h1>Welcome back, <span class="highlight">Arjun Singh</span></h1>
+                <div class="trust-badge-display">
+                    <span class="badge verified">✓ Verified User</span>
+                    <span class="college-info">SIU Nagpur | Year 3</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quick Stats -->
+        <section class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon">💰</div>
+                <div class="stat-content">
+                    <div class="stat-label">Current Balance</div>
+                    <div class="stat-value">₹15,400</div>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">⭐</div>
+                <div class="stat-content">
+                    <div class="stat-label">Credit Score</div>
+                    <div class="stat-value credit-score">780</div>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">🏆</div>
+                <div class="stat-content">
+                    <div class="stat-label">Reputation</div>
+                    <div class="stat-value">Excellent</div>
+                </div>
+            </div>
+            <div class="stat-card emergency">
+                <div class="stat-icon">🚨</div>
+                <div class="stat-content">
+                    <div class="stat-label">Emergency Credit</div>
+                    <div class="stat-value">₹800</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Emergency Credit Line -->
+        <section class="emergency-section">
+            <div class="card premium-card">
+                <div class="card-header">
+                    <h2>⚡ Emergency Credit Line</h2>
+                    <span class="instant-badge">Instant Approval</span>
+                </div>
+                <div class="card-body">
+                    <div class="emergency-info">
+                        <div class="emergency-details">
+                            <p class="emergency-desc">Quick access to emergency funds (₹200 - ₹1,000) with instant auto-matching to available lenders.</p>
+                            <div class="emergency-features">
+                                <div class="feature-item">
+                                    <span class="feature-icon">✓</span>
+                                    <span>Zero/Low Interest</span>
+                                </div>
+                                <div class="feature-item">
+                                    <span class="feature-icon">✓</span>
+                                    <span>Auto-Match in seconds</span>
+                                </div>
+                                <div class="feature-item">
+                                    <span class="feature-icon">✓</span>
+                                    <span>Available: ₹800</span>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary" id="requestEmergencyBtn">Request Emergency Loan</button>
+                    </div>
+                    <div class="emergency-history">
+                        <h4>Recent Emergency Loans</h4>
+                        <div class="history-item">
+                            <div class="history-info">
+                                <span class="history-amount">₹500</span>
+                                <span class="history-status completed">Completed</span>
+                            </div>
+                            <div class="history-meta">
+                                <span>0% Interest</span>
+                                <span>•</span>
+                                <span>Funded: Nov 01, 2025</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Recommended Lenders -->
+        <section class="lenders-section">
+            <div class="card">
+                <div class="card-header">
+                    <h2>🎯 Recommended Lenders for You</h2>
+                    <p class="subtitle">Matched based on repayment history, college affiliation &amp; risk profile</p>
+                </div>
+                <div class="card-body">
+                    <div class="lenders-grid" id="lendersGrid">
+                        <!-- Lenders will be populated by JS -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Group Lending -->
+        <section class="group-lending-section">
+            <div class="card">
+                <div class="card-header">
+                    <h2>👥 Group Lending &amp; Shared Repayment</h2>
+                    <button class="btn btn-secondary" id="createGroupBtn">+ Create Group Loan</button>
+                </div>
+                <div class="card-body">
+                    <div class="group-loan-card">
+                        <div class="group-header">
+                            <div class="group-info">
+                                <h3>Tech Startup Bytes</h3>
+                                <span class="group-type">Startup Project</span>
+                            </div>
+                            <span class="status-badge active">Active</span>
+                        </div>
+                        <div class="group-details">
+                            <div class="detail-item">
+                                <span class="detail-label">Total Loan</span>
+                                <span class="detail-value">₹25,000</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Per Member</span>
+                                <span class="detail-value">₹6,250</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Members</span>
+                                <span class="detail-value">4 Students</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Next Due</span>
+                                <span class="detail-value">Dec 01, 2025</span>
+                            </div>
+                        </div>
+                        <div class="group-members">
+                            <div class="member-avatars">
+                                <div class="member-avatar">AS</div>
+                                <div class="member-avatar">RK</div>
+                                <div class="member-avatar">PV</div>
+                                <div class="member-avatar">NK</div>
+                            </div>
+                            <span class="shared-responsibility">Shared Repayment Responsibility</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Anonymous Lending Toggle -->
+        <section class="anonymous-section">
+            <div class="card glass-card">
+                <div class="card-body">
+                    <div class="anonymous-content">
+                        <div class="anonymous-info">
+                            <h3>🎭 Anonymous Lending Layer</h3>
+                            <p>Your identity will be hidden from lenders. Only credit scores and repayment records will be visible.</p>
+                        </div>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="anonymousToggle">
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Active Loans -->
+        <section class="active-loans-section">
+            <div class="card">
+                <div class="card-header">
+                    <h2>📋 Active Loans</h2>
+                </div>
+                <div class="card-body">
+                    <div class="loans-list" id="activeLoansContainer">
+                        <!-- Active loans will be populated by JS -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Credit Score & Wallet Row -->
+        <div class="two-column-section">
+            <!-- Credit Score -->
+            <section class="credit-score-section">
+                <div class="card">
+                    <div class="card-header">
+                        <h2>📊 EduCIBIL Score</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="credit-score-display">
+                            <div class="score-circle">
+                                <svg viewBox="0 0 200 200">
+                                    <circle cx="100" cy="100" r="80" class="score-bg"></circle>
+                                    <circle cx="100" cy="100" r="80" class="score-progress" id="scoreCircle"></circle>
+                                </svg>
+                                <div class="score-text">
+                                    <span class="score-number">780</span>
+                                    <span class="score-rating">Excellent</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="score-breakdown">
+                            <div class="breakdown-item">
+                                <div class="breakdown-header">
+                                    <span>Payment History</span>
+                                    <span>95%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 95%"></div>
+                                </div>
+                            </div>
+                            <div class="breakdown-item">
+                                <div class="breakdown-header">
+                                    <span>Group Lending</span>
+                                    <span>88%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 88%"></div>
+                                </div>
+                            </div>
+                            <div class="breakdown-item">
+                                <div class="breakdown-header">
+                                    <span>Verification</span>
+                                    <span>100%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 100%"></div>
+                                </div>
+                            </div>
+                            <div class="breakdown-item">
+                                <div class="breakdown-header">
+                                    <span>Trust Score</span>
+                                    <span>92%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 92%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Wallet -->
+            <section class="wallet-section">
+                <div class="card">
+                    <div class="card-header">
+                        <h2>💳 Wallet</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="wallet-balance">
+                            <span class="wallet-label">Available Balance</span>
+                            <span class="wallet-amount">₹3,450</span>
+                        </div>
+                        <button class="btn btn-outline" id="addFundsBtn">+ Add Funds</button>
+                        <div class="wallet-actions">
+                            <h4>Quick Actions</h4>
+                            <button class="action-btn">Withdraw</button>
+                            <button class="action-btn">Transfer</button>
+                            <button class="action-btn">History</button>
+                        </div>
+                        <div class="recent-transactions">
+                            <h4>Recent Transactions</h4>
+                            <div class="transaction-item">
+                                <div class="transaction-info">
+                                    <span class="transaction-type">Loan Payment</span>
+                                    <span class="transaction-date">Nov 05, 2025</span>
+                                </div>
+                                <span class="transaction-amount debit">- ₹500</span>
+                            </div>
+                            <div class="transaction-item">
+                                <div class="transaction-info">
+                                    <span class="transaction-type">Wallet Recharge</span>
+                                    <span class="transaction-date">Nov 03, 2025</span>
+                                </div>
+                                <span class="transaction-amount credit">+ ₹2,000</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Verification Status -->
+        <section class="verification-section">
+            <div class="card glass-card">
+                <div class="card-header">
+                    <h2>🔒 Verification &amp; Security</h2>
+                    <span class="trust-level">Enhanced Trust Level</span>
+                </div>
+                <div class="card-body">
+                    <div class="verification-grid">
+                        <div class="verification-item verified">
+                            <span class="verify-icon">✓</span>
+                            <div class="verify-info">
+                                <span class="verify-label">College ID</span>
+                                <span class="verify-status">Verified</span>
+                            </div>
+                        </div>
+                        <div class="verification-item verified">
+                            <span class="verify-icon">✓</span>
+                            <div class="verify-info">
+                                <span class="verify-label">Institutional Email</span>
+                                <span class="verify-status">Verified</span>
+                            </div>
+                        </div>
+                        <div class="verification-item pending">
+                            <span class="verify-icon">⏳</span>
+                            <div class="verify-info">
+                                <span class="verify-label">ID Upload (Optional)</span>
+                                <span class="verify-status">Pending</span>
+                            </div>
+                            <button class="btn btn-sm" id="uploadIdBtn">Upload ID</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Request New Loan -->
+        <section class="request-loan-section">
+            <button class="btn btn-primary btn-large" id="requestLoanBtn">
+                <span>+ Request New Loan</span>
+            </button>
+        </section>
+    </main>
+
+    <!-- Modal: Request Loan -->
+    <div class="modal" id="requestLoanModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Request New Loan</h2>
+                <button class="modal-close" id="closeLoanModal">×</button>
+            </div>
+            <div class="modal-body">
+                <form id="loanRequestForm">
+                    <div class="form-group">
+                        <label>Loan Amount</label>
+                        <input type="number" class="form-input" placeholder="Enter amount" min="100" max="50000" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Purpose</label>
+                        <select class="form-input" required>
+                            <option value="">Select purpose</option>
+                            <option value="education">Education</option>
+                            <option value="travel">Travel</option>
+                            <option value="emergency">Emergency</option>
+                            <option value="project">Project</option>
+                            <option value="festival">Festival</option>
+                            <option value="startup">Startup</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Duration (months)</label>
+                        <input type="number" class="form-input" placeholder="Duration" min="1" max="24" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Repayment Plan</label>
+                        <select class="form-input" required>
+                            <option value="">Select plan</option>
+                            <option value="weekly">Weekly</option>
+                            <option value="biweekly">Bi-weekly</option>
+                            <option value="monthly">Monthly</option>
+                        </select>
+                    </div>
+                    <div class="form-checkbox">
+                        <input type="checkbox" id="anonymousBorrow">
+                        <label for="anonymousBorrow">Borrow Anonymously</label>
+                    </div>
+                    <div class="form-checkbox">
+                        <input type="checkbox" id="groupLoan">
+                        <label for="groupLoan">Enable Group Lending</label>
+                    </div>
+                    <div class="estimated-rate">
+                        <span>Estimated Interest Rate:</span>
+                        <span class="rate-value">6-8%</span>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full">Submit Loan Request</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: Emergency Loan -->
+    <div class="modal" id="emergencyLoanModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>⚡ Emergency Credit Request</h2>
+                <button class="modal-close" id="closeEmergencyModal">×</button>
+            </div>
+            <div class="modal-body">
+                <form id="emergencyLoanForm">
+                    <div class="emergency-form-info">
+                        <p>Quick access to emergency funds with instant auto-matching.</p>
+                    </div>
+                    <div class="form-group">
+                        <label>Amount (₹200 - ₹800)</label>
+                        <input type="number" class="form-input" placeholder="Enter amount" min="200" max="800" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Reason</label>
+                        <textarea class="form-input" rows="3" placeholder="Brief reason for emergency" required></textarea>
+                    </div>
+                    <div class="emergency-benefits">
+                        <div class="benefit-item">✓ Zero/Low Interest</div>
+                        <div class="benefit-item">✓ Instant Matching</div>
+                        <div class="benefit-item">✓ Quick Approval</div>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full">Request Emergency Loan</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: Create Group Loan -->
+    <div class="modal" id="createGroupModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Create Group Loan</h2>
+                <button class="modal-close" id="closeGroupModal">×</button>
+            </div>
+            <div class="modal-body">
+                <form id="createGroupForm">
+                    <div class="form-group">
+                        <label>Team Name</label>
+                        <input type="text" class="form-input" placeholder="Enter team name" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Project Type</label>
+                        <select class="form-input" required>
+                            <option value="">Select type</option>
+                            <option value="startup">Startup</option>
+                            <option value="project">Academic Project</option>
+                            <option value="festival">Festival/Event</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Total Amount</label>
+                        <input type="number" class="form-input" placeholder="Total loan amount" min="1000" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Number of Members</label>
+                        <input type="number" class="form-input" placeholder="Number of team members" min="2" max="10" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Member Email IDs (comma separated)</label>
+                        <textarea class="form-input" rows="3" placeholder="email1@college.edu, email2@college.edu" required></textarea>
+                    </div>
+                    <div class="group-info-box">
+                        <p>All members will share repayment responsibility equally. Score impact will be divided among members.</p>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full">Create Group Loan</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="bor.js"></script>
+</body>
+</html>
